@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
             finish()
 
             editText.findViewById<EditText>(R.id.editText)
+
         }
     }
 }
