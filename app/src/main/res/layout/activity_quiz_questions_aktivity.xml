@@ -1,58 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="QuizQuestionsAktivity">
 
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="vertical"
+  <TextView
+      android:id="@+id/tv_question"
+      android:textAlignment="center"
+      android:layout_width="400dp"
+      android:layout_height="82dp"
       android:layout_gravity="center"
-      android:padding="16dp">
-
-    <TextView
-        android:id="@+id/tv_question"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_gravity="center"
-        android:textColor="#364A43"
-        android:textSize="22sp"
-        android:text="Vilket tröjnummer hade Zlatan i landslaget?"/>
+      android:layout_margin="10dp"
+      android:text="Vilket tröjnummer hade Zlatan i landslaget?"
+      android:textColor="#364A43"
+      android:textSize="22sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        app:layout_constraintTop_toBottomOf="@id/tv_question"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/iv_image"
         android:layout_width="wrap_content"
         android:layout_height="194dp"
         android:layout_marginTop="1dp"
         android:src="@drawable/zlatan" />
-    <LinearLayout
-        android:id="@+id/ll_progress"
-        android:layout_width="match_parent"
+  <LinearLayout
+      android:id="@+id/ll_progress"
+      app:layout_constraintTop_toBottomOf="@id/iv_image"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:gravity="center_vertical"
+      android:orientation="horizontal"
+      >
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_marginStart="20dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        >
-      <ProgressBar
-          android:id="@+id/progressBar"
-          style="?android:attr/progressBarStyleHorizontal"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:layout_weight="1"
-          android:max="10"
-          android:minHeight="50dp"
-          android:progress="0"
-          android:indeterminate="false"
-          />
-      <TextView
-          android:id="@+id/tv_progress"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:max="10"
+        android:minHeight="50dp"
+        android:progress="0"
+        android:indeterminate="false"
+        />
+    <TextView
+        android:id="@+id/tv_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:padding="15dp"
         android:textColorHint="#7A8089"
@@ -61,82 +66,96 @@
 
 
 
-    </LinearLayout>
-    
-    <TextView
-        android:id="@+id/tv_svar_ett"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:gravity="center"
-        android:padding="15dp"
-        android:textColor="#7A8089"
-        android:textSize="18sp"
-        android:text="Shoo"
-        android:background="@drawable/default_option_border_bg"/>
-
-    <TextView
-        android:id="@+id/tv_svar_två"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:gravity="center"
-        android:padding="15dp"
-        android:textColor="#7A8089"
-        android:textSize="18sp"
-        android:text="Shoo"
-        android:background="@drawable/default_option_border_bg"/>
-
-    <TextView
-        android:id="@+id/tv_svar_tre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:gravity="center"
-        android:padding="15dp"
-        android:textColor="#7A8089"
-        android:textSize="18sp"
-        android:text="Shoo"
-        android:background="@drawable/default_option_border_bg"/>
-
-    <TextView
-        android:id="@+id/tv_svar_fyra"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:gravity="center"
-        android:padding="15dp"
-        android:textColor="#7A8089"
-        android:textSize="18sp"
-        android:text="Shoo"
-        android:background="@drawable/default_option_border_bg"/>
-
-    <Button
-        android:id="@+id/btn_bekräfta"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="#0C7C11"
-        android:text="Bekräfta"
-        android:textColor="@android:color/white"
-        android:textSize="19sp"
-        android:textStyle="bold"/>
-
-
-
-
-
   </LinearLayout>
+  <ScrollView
+      android:id="@+id/scroll"
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      app:layout_constraintTop_toBottomOf="@id/ll_progress"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:layout_height="200dp">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+      <TextView
+          android:id="@+id/tv_svar_ett"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_margin="10dp"
+          android:gravity="center"
+          android:padding="15dp"
+          android:textColor="#000000"
+          android:textSize="18sp"
+          android:text="Shoo"
+          android:background="@drawable/default_option_border_bg"/>
+
+      <TextView
+          android:id="@+id/tv_svar_två"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="10dp"
+          android:layout_marginTop="10dp"
+          android:layout_marginEnd="10dp"
+          android:layout_marginBottom="10dp"
+          android:gravity="center"
+          android:padding="15dp"
+          android:textColor="#000000"
+          android:textSize="18sp"
+          android:text="Shoo"
+          android:background="@drawable/default_option_border_bg"/>
+
+      <TextView
+          android:id="@+id/tv_svar_tre"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="10dp"
+          android:layout_marginTop="10dp"
+          android:layout_marginEnd="10dp"
+          android:layout_marginBottom="10dp"
+          android:gravity="center"
+          android:padding="15dp"
+          android:textColor="#000000"
+          android:textSize="18sp"
+          android:text="Shoo"
+          android:background="@drawable/default_option_border_bg"/>
+
+      <TextView
+          android:id="@+id/tv_svar_fyra"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="10dp"
+          android:layout_marginTop="10dp"
+          android:layout_marginEnd="10dp"
+          android:layout_marginBottom="10dp"
+          android:gravity="center"
+          android:padding="15dp"
+          android:textColor="#000204"
+          android:textSize="18sp"
+          android:text="Shoo"
+          android:background="@drawable/default_option_border_bg"/>
+    </LinearLayout>
+  </ScrollView>
+  <Button
+      android:id="@+id/btn_bekräfta"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintBottom_toBottomOf="parent"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="10dp"
+      android:background="#0C7C11"
+      android:text="Bekräfta"
+      android:textColor="@android:color/white"
+      android:textSize="19sp"
+      android:textStyle="bold"/>
 
 
 
-</ScrollView>
+
+
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>

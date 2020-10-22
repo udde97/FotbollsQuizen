@@ -1,6 +1,11 @@
 package com.example.fotbollsquizen
 
 object Information {
+    const val USER_NAME: String = "user_name"
+    const val TOTAL_QUESTIONS: String ="total_questions"
+    const val CORRECT_ANSWERS: String ="correct_anwers"
+
+
 
     fun getQuestions():ArrayList<Questions>{
         val questionList = ArrayList <Questions>()
@@ -17,7 +22,7 @@ object Information {
         questionList.add((fråg1))
 
         // 2
-        val fråg2= Questions(2,"Sveriges Landslag åkte ut i kvartsfinal år 2018, mot vilket lag?",
+        val fråg2= Questions(2,"Sveriges Landslag åkte ut i kvartsfinal i vm år 2018, mot vilket lag?",
             R.drawable.sverige,
             "Sceweiz",
             "Tyskland",
@@ -107,7 +112,7 @@ object Information {
         questionList.add(fråg9)
 
         //10
-        val fråg10 = Questions(10,"Zidane fick rödkort efter att ha attackerat en spelarei vm 2006, vilken spelare var det?",
+        val fråg10 = Questions(10,"Zidane fick rödkort efter att ha attackerat en spelare i vm 2006, vilken spelare var det?",
             R.drawable.zidane,
             "Marco Reus",
             "Marco Materazzi",

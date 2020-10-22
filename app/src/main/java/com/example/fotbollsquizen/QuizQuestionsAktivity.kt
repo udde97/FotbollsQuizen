@@ -1,11 +1,13 @@
 package com.example.fotbollsquizen
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_quiz_questions_aktivity.*
 import java.lang.NumberFormatException
@@ -15,10 +17,14 @@ class QuizQuestionsAktivity : AppCompatActivity(),View.OnClickListener {
     private var mCurrentPosition: Int = 1
     private var mQuestionsList: ArrayList<Questions>? = null
     private var mSelectedOptionPosition : Int = 0
+    private var mCorrectAnswers: Int = 0
+    private var mUserName: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_questions_aktivity)
+
+        mUserName = intent.getStringExtra(Information.USER_NAME)
 
 
 
@@ -30,15 +36,23 @@ class QuizQuestionsAktivity : AppCompatActivity(),View.OnClickListener {
         tv_svar_två.setOnClickListener(this)
         tv_svar_tre.setOnClickListener(this)
         tv_svar_fyra.setOnClickListener(this)
+        btn_bekräfta.setOnClickListener(this)
 
 
     }
     private fun setQuestion(){
 
-        val mCurrentPosition = 1
+      
         val question = mQuestionsList!![mCurrentPosition-1]
 
         defaultOptionsView()
+
+        if(mCurrentPosition == mQuestionsList!!.size){
+            btn_bekräfta.text = "AVSLUTA"
+
+        }else{
+            btn_bekräfta.text = "BEKRÄFTA"
+        }
 
         progressBar.progress = mCurrentPosition
         tv_progress.text= "$mCurrentPosition" + "/"+ progressBar.max
@@ -60,7 +74,7 @@ class QuizQuestionsAktivity : AppCompatActivity(),View.OnClickListener {
         options.add(3,tv_svar_fyra)
 
         for (option in options) {
-            option.setTextColor(Color.parseColor("0C7C11"))
+            option.setTextColor(Color.parseColor("#bdbdbd"))
             option.typeface = Typeface.DEFAULT
             option.background= ContextCompat.getDrawable(
                 this,
@@ -85,8 +99,68 @@ class QuizQuestionsAktivity : AppCompatActivity(),View.OnClickListener {
             R.id.tv_svar_fyra ->{
                 selectedOptionView(tv_svar_fyra,4)
             }
+            R.id.btn_bekräfta -> {
+                if(mSelectedOptionPosition==0){
+                    mCurrentPosition ++
+
+                    when{
+                        mCurrentPosition <= mQuestionsList!!.size ->{
+                            setQuestion()
+                        } else ->{
+                            val intent = Intent(this,Resultat_aktivitet::class.java)
+                        intent.putExtra(Information.USER_NAME, mUserName)
+                        intent.putExtra(Information.CORRECT_ANSWERS, mCorrectAnswers)
+                        intent.putExtra(Information.TOTAL_QUESTIONS,mQuestionsList!!.size)
+                        startActivity(intent)
+
+                    }
+                    }
+                }else{
+                    val question = mQuestionsList?.get (mCurrentPosition -1)
+                    if(question!!.rättSvar != mSelectedOptionPosition){
+                        answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
+                    }else{
+                        mCorrectAnswers++
+                    }
+                    answerView(question.rättSvar, R.drawable.correct_option_border_bg)
+
+                    if(mCurrentPosition == mQuestionsList!!.size){
+                        btn_bekräfta.text = "AVSLUTA"
+
+                    }else{
+                        btn_bekräfta.text = "GÅ TILL NÄSTA FRÅGA"
+                    }
+                    mSelectedOptionPosition = 0
+                }
+
+            }
         }
 
+    }
+    private fun answerView(answer: Int, drawableView: Int){
+        when(answer) {
+            1 -> {
+                tv_svar_ett.background = ContextCompat.getDrawable(
+                    this,drawableView
+                )
+            }
+            2 -> {
+                tv_svar_två.background = ContextCompat.getDrawable(
+                    this,drawableView
+                )
+
+            }
+            3 -> {
+                tv_svar_tre.background = ContextCompat.getDrawable(
+                    this,drawableView
+                )
+            }
+            4 ->{
+                tv_svar_fyra.background = ContextCompat.getDrawable(
+                    this,drawableView
+                )
+            }
+        }
     }
 
              // vad som ska hända när man tryckt på något av svaren samt resetar om man byter
@@ -95,7 +169,7 @@ class QuizQuestionsAktivity : AppCompatActivity(),View.OnClickListener {
         defaultOptionsView()
         mSelectedOptionPosition= selectedOptionNum
 
-        tv.setTextColor(Color.parseColor("363A43"))
+        tv.setTextColor(Color.parseColor("#363A43"))
         tv.setTypeface(tv.typeface,Typeface.BOLD)
         tv.background= ContextCompat.getDrawable(
             this,

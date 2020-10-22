@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Resultat_aktivitet"
+    android:background="@drawable/fottbollsbackgrund"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="20dp"
+    >
+
+    <TextView
+        android:id="@+id/tv_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Resultat"
+        android:textSize="25sp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"/>
+
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="170dp"
+        android:src="@drawable/hiclipart"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="GRATULERAR!"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_namn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:text="ANVÄNDARNAMN"/>
+
+    <TextView
+        android:id="@+id/tv_resultat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@android:color/primary_text_light"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:text="Din resultat är 9 utav 10"/>
+
+    <Button
+        android:id="@+id/btn_avsluta"
+        android:layout_width="201dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="1dp"
+        android:background="@android:color/darker_gray"
+        android:text="AVSLUTA"
+        android:textStyle="bold"
+
+        />
+
+
+
+</LinearLayout>
